@@ -1,4 +1,4 @@
-PETCOMMERCE BACKEDN APP
+PETCOMMERCE BACKEND APP
 
 beware that this project is expeceted to run on port 8080, so make sure to have it available
 
