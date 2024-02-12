@@ -30,6 +30,11 @@ public class ClientController {
         return ResponseEntity.ok(this.clientService.getById(clientId));
     }
 
+    @GetMapping("/get-client/{clientName}")
+    public ResponseEntity getOne (@PathVariable String clientName) {
+        return ResponseEntity.ok(this.clientService.getByName(clientName));
+    }
+
     @PostMapping("/post/{amountToGenerate}")
     public ResponseEntity post (@PathVariable int amountToGenerate) {
         ArrayList<Client> newClients = ClientDataGenerator.generateClients(amountToGenerate);

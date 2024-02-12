@@ -20,7 +20,7 @@ public class ProductDataGenerator {
             products.add(new Product(
                     String.valueOf(fake.name().fullName()), //name
                     String.valueOf(fake.lorem().characters(50)), //description
-                    fake.number().numberBetween(1, 99999999), // price
+                    fake.number().numberBetween(1, 99999), // price
                     ("height: " + fake.number().numberBetween(1, 10) + "cm, width: " + fake.number().numberBetween(1, 10) + "cm, deep: " + fake.number().numberBetween(1, 10)  + " cm"),
                     //dimensions
                     formatDateAndTimeToLocalDate(fake.date()), //expiring date

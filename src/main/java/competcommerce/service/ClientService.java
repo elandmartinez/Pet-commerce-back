@@ -22,7 +22,7 @@ public class ClientService {
         return this.clientRepository.findAll();
     }
     public Optional<Client> getById (int clientId) {
-        if(this.clientRepository.existsById(clientId)) {
+        if(!this.clientRepository.existsById(clientId)) {
             throw new RuntimeException("There's no records for the id provided");
         }
         return this.clientRepository.findById(clientId);
@@ -31,6 +31,9 @@ public class ClientService {
         this.clientRepository.saveAll(clients);
     }
 
+    public List<Client> getByName(String name) {
+            return this.clientRepository.findAllByNameContainingIgnoreCase(name);
+    }
     public void addOne (Client client) {
         this.clientRepository.save(client);
     }

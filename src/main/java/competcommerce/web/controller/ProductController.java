@@ -25,6 +25,15 @@ public class ProductController {
         return ResponseEntity.ok(this.productService.getAll());
     }
 
+    @GetMapping("/get-paginated")
+    public ResponseEntity getPaginated (@RequestParam(defaultValue = "0") int pagNum,
+                                        @RequestParam(defaultValue = "10") int amountPerPag,
+                                        @RequestParam(defaultValue = "name") String sortBy,
+                                        @RequestParam(defaultValue = "ASC") String direction
+    ) {
+        return ResponseEntity.ok(this.productService.getAllPaginated(pagNum, amountPerPag, direction, sortBy));
+    }
+
     @GetMapping("/get/{productId}")
     public ResponseEntity getById(@PathVariable  int productId) {
         return ResponseEntity.ok(this.productService.getById(productId));
