@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,6 +44,7 @@ public class ProductService {
     public void addOne(Product product) {
         this.productRepository.save(product);
     }
+
     public void addMany(List<Product> products) {
         this.productRepository.saveAll(products);
     }

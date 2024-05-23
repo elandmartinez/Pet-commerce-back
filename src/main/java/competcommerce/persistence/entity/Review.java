@@ -34,5 +34,4 @@ public class Review {
         this.description = description;
         this.productId = productId;
     }
-
 }
