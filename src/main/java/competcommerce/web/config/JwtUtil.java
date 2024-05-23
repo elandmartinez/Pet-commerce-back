@@ -2,6 +2,7 @@ package competcommerce.web.config;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -19,5 +20,22 @@ public class JwtUtil {
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(15)))
                 .sign(ALGORTITHM);
+    }
+
+    public boolean isValid (String jwt) {
+        try {
+            JWT.require(ALGORTITHM)
+                    .build()
+                    .verify(jwt);
+            return true;
+        } catch (JWTVerificationException e) {
+            return false;
+        }
+    }
+    public String getUsername (String jwt) {
+        return JWT.require(ALGORTITHM)
+                .build()
+                .verify(jwt)
+                .getSubject();
     }
 }
