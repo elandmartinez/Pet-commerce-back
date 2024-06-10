@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "payment-methods")
+@Table(name = "payment_methods")
 @Getter
 @Setter
 @NoArgsConstructor
