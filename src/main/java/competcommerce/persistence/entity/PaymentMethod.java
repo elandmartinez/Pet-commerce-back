@@ -26,7 +26,7 @@ public class PaymentMethod {
     @Column(nullable = false, name = "card_code")
     private short cardCode;
 
-    @Column(nullable = false, length = 50, name = "ownerName")
+    @Column(nullable = false, length = 50, name = "owner_name")
     private String ownerName;
 
     @Column(nullable = false, name = "client_id")
