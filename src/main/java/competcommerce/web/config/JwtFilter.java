@@ -28,19 +28,18 @@ public class JwtFilter extends OncePerRequestFilter {
         this.userDetailsService = userDetailsService;
     }
 
-    //@Override
+    @Override
     protected void doFilterInternal (HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException, ServletException {
 
-        //validar que sea un header autoriztion valido (que el json en el header contenga realmente un jwt)
+        //validar que sea un header autorization valido (que el json en el header contenga realmente un jwt)
 
         String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-        if (authHeader == null || !authHeader.startsWith("Bearer")) {
+        if (authHeader == null || !authHeader.startsWith("Basic") && !authHeader.startsWith("Bearer")) {
             filterChain.doFilter(request, response);
             return;
         }
 
         //validar que el jwt proporcionado sea adecuado para el estandar jwt (que contenga las credencials del usuario para pasar el filtro de seguridad)
-
         String jwt = authHeader.split(" ")[1].trim();
 
         if(!this.jwtUtil.isValid(jwt)) {
@@ -49,6 +48,7 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
         //cargar el usuario en UserDetailService (confirmar que el usuario i exista en base de datos y realmente tenga permisos)
+
 
         String username = this.jwtUtil.getUsername(jwt);
 
@@ -63,8 +63,7 @@ public class JwtFilter extends OncePerRequestFilter {
         );
         authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request) );
         SecurityContextHolder.getContext().setAuthentication(authToken);
-        System.out.println("auth token:");
-        System.out.println(authToken);
+        System.out.println(authToken.getPrincipal());
         filterChain.doFilter(request, response);
     }
 }
