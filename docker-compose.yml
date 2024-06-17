@@ -10,12 +10,12 @@ services:
     volumes:
     - ./mysql_data:/var/lib/mysql
   
-  #  pet-commerce:
-  #   image: pet-commerce:latest
-  #  environment:
-  #   - MYSQL_ROOT_PASSWORD=admin123
-  #  ports:
-  #    - 8080:8080
+  pet-commerce:
+    image: pet-commerce:latest
+    environment:
+    - MYSQL_ROOT_PASSWORD=admin123
+    ports:
+      - 8080:8080
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
