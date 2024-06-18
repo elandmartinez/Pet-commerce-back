@@ -14,14 +14,12 @@ public class JwtUtil {
     private static final Algorithm ALGORITHM = Algorithm.HMAC256(SECRET_KEY);
 
     public String create (String username) {
-        String token = JWT.create()
+        return JWT.create()
                 .withSubject(username)
                 .withIssuer("pet-commerce")
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(15)))
                 .sign(ALGORITHM);
-
-        return token;
     }
 
     public boolean isValid (String jwt) {

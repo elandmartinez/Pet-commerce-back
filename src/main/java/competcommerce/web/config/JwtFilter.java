@@ -28,13 +28,16 @@ public class JwtFilter extends OncePerRequestFilter {
         this.userDetailsService = userDetailsService;
     }
 
+    //check java application logs (check spring documentation)
+    //check that admin is actually given all permissions in the app with the jwt
+
     @Override
     protected void doFilterInternal (HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException, ServletException {
 
         //validar que sea un header autorization valido (que el json en el header contenga realmente un jwt)
 
         String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-        if (authHeader == null || !authHeader.startsWith("Basic") && !authHeader.startsWith("Bearer")) {
+        if (authHeader == null || !authHeader.startsWith("Bearer")) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -47,11 +50,8 @@ public class JwtFilter extends OncePerRequestFilter {
             return;
         }
 
-        //cargar el usuario en UserDetailService (confirmar que el usuario i exista en base de datos y realmente tenga permisos)
-
-
+        //cargar el usuario en UserDetailService (confirmar que el usuario si exista en base de datos y realmente tenga permisos)
         String username = this.jwtUtil.getUsername(jwt);
-
         User user = (User) userDetailsService.loadUserByUsername(username);
 
         //cargar al usuario en el contexto de seguridad (darle acceso al usuario en los niveles correspondientes a su rango)
@@ -61,9 +61,9 @@ public class JwtFilter extends OncePerRequestFilter {
                 user.getPassword(),
                 user.getAuthorities()
         );
-        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request) );
+        //authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request) );
         SecurityContextHolder.getContext().setAuthentication(authToken);
-        System.out.println(authToken.getPrincipal());
+        System.out.println(SecurityContextHolder.getDeferredContext());
         filterChain.doFilter(request, response);
     }
 }

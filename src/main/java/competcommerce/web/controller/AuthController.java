@@ -28,7 +28,6 @@ public class AuthController {
 
     @PostMapping("/api/login")
     public ResponseEntity login (@RequestBody LoginDto loginDto) {
-        //check why this is failing even when the credentials are correct, check platzi class about this
         UsernamePasswordAuthenticationToken login = new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
         Authentication authentication = this.authenticationManager.authenticate(login);
         System.out.println(authentication.isAuthenticated());
