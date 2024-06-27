@@ -22,6 +22,7 @@ public class ClientDataGenerator {
                     //name, email, phone, nationalCode
                     fake.name().fullName(), //name
                     fake.name().firstName() + "@gmail.com",
+                    fake.funnyName().toString(),
                     fake.number().numberBetween(1, 999999999), // price
                     (short) fake.number().numberBetween(1, 199)
             ));

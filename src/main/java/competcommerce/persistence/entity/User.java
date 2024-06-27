@@ -1,5 +1,6 @@
 package competcommerce.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,10 @@ public class User {
     @Getter
     @Id
     @Column(name = "user_name", nullable = false, length = 30)
-    private String userName;
+    private String username;
+
+    @Column(name = "email", length = 30)
+    private String email;
 
     @Getter
     @Column(nullable = false, length = 10)
@@ -30,11 +34,16 @@ public class User {
     @Column (nullable = false, columnDefinition = "BOOLEAN")
     private Boolean disabled;
 
-    public User (String role, Boolean locked, Boolean disabled, String password, String userName) {
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "email", insertable = false, updatable = false)
+    private Client client;
+
+    public User (String role, Boolean locked, Boolean disabled, String password, String username, String email) {
         this.role = role;
         this.disabled = disabled;
         this.locked = locked;
-        this.userName = userName;
+        this.email = email;
+        this.username = username;
         this.password = password;
     }
 }

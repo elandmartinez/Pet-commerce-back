@@ -44,7 +44,7 @@ public class ClientController {
     }
 
     @PostMapping("/post-client")
-    public ResponseEntity postOne(@RequestBody Client client){
+    public ResponseEntity postClient(@RequestBody Client client){
         this.clientService.addOne(client);
         return ResponseEntity.ok().build();
     }

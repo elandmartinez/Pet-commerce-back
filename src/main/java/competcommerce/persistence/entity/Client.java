@@ -12,15 +12,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "client_id", nullable = false)
-    private int clientId;
+    @Column(nullable = false, length = 100)
+    public String email;
 
     @Column(nullable = false, length = 100)
     private String name;
 
-    @Column(nullable = false, length = 100)
-    private String email;
+    @Column(nullable = false, length=50)
+    private String password;
 
     @Column(nullable = false, name = "phone_number")
     private int phoneNumber;
@@ -31,11 +30,13 @@ public class Client {
     public Client (
             String name,
             String email,
+            String password,
             int phoneNumber,
             short nationalCode
     ) {
         this.name = name;
         this.email = email;
+        this.password = password;
         this.phoneNumber = phoneNumber;
         this.nationalCode = nationalCode;
     }

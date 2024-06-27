@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserSecurityService implements UserDetailsService {
-
     private final UserRepository userRepository;
 
     @Autowired
@@ -21,10 +20,10 @@ public class UserSecurityService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = this.userRepository.findById(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User " + username + " was not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("Username " + username + " was not found"));
 
         return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getUserName())
+                .username(user.getUsername())
                 .password(user.getPassword())
                 .roles(user.getRole())
                 .accountLocked(user.getLocked())
