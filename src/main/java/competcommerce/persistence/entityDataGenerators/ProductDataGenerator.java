@@ -23,8 +23,8 @@ public class ProductDataGenerator {
                     fake.number().numberBetween(1, 99999), // price
                     ("height: " + fake.number().numberBetween(1, 10) + "cm, width: " + fake.number().numberBetween(1, 10) + "cm, deep: " + fake.number().numberBetween(1, 10)  + " cm"),
                     //dimensions
-                    formatDateAndTimeToLocalDate(fake.date()), //expiring date
-                    formatDateAndTimeToLocalDate(fake.date()), //elaboration date
+                    fake.date().toString(), //expiring date
+                    fake.date().toString(), //elaboration date
                     String.valueOf(fake.name().fullName()), //provider
                     String.valueOf(fake.lorem().characters(50)),//category
                     fake.number().numberBetween(1, 99999999),//stock

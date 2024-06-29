@@ -52,4 +52,8 @@ public class ProductService {
     public void deleteById (int productId) {
         this.productRepository.deleteById(productId);
     }
+
+    public void deleteAll () {
+        this.productRepository.deleteAll();
+    }
 }

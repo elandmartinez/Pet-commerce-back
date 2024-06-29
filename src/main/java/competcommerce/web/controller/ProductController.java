@@ -39,10 +39,9 @@ public class ProductController {
         return ResponseEntity.ok(this.productService.getById(productId));
     }
 
-    @PostMapping("/post/{amountToGenerate}")
-    public ResponseEntity postProducts(@PathVariable int amountToGenerate) {
-        ArrayList<Product> productsToPush = ProductDataGenerator.generateProducts(amountToGenerate);
-        this.productService.addMany(productsToPush);
+    @PostMapping("/post")
+    public ResponseEntity postProducts(@RequestBody ArrayList<Product> newProducts) {
+        this.productService.addMany(newProducts);
         return ResponseEntity.ok().build();
     }
 
@@ -59,10 +58,16 @@ public class ProductController {
         return ResponseEntity.ok().build();
 
     }
-    @DeleteMapping(value = "/delete/{productId}")
+    @DeleteMapping("/delete/{productId}")
     public ResponseEntity deleteProduct(@PathVariable int productId) {
         this.productService.deleteById(productId);
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/delete/all")
+    public ResponseEntity deleteAll () {
+        this.productService.deleteAll();
+        return ResponseEntity.ok().build();
     }
 
 }

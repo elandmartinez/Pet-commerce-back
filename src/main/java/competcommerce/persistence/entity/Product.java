@@ -37,11 +37,11 @@ public class Product {
     @Column(nullable = false, length = 80)
     private String dimensions;
 
-    @Column(nullable = false, columnDefinition = "DATETIME", name = "expiring_date")
-    private LocalDate expiringDate;
+    @Column(nullable = false, name = "expiration_date")
+    private String expirationDate;
 
-    @Column(nullable = false, columnDefinition = "DATETIME", name = "elaboration_date")
-    private LocalDate elaborationDate;
+    @Column(nullable = false, name = "elaboration_date")
+    private String elaborationDate;
 
     @Column(nullable = false, length = 50)
     private String provider;
@@ -62,8 +62,8 @@ public class Product {
             String description,
             int price,
             String dimensions,
-            LocalDate expiringDate,
-            LocalDate elaborationDate,
+            String expirationDate,
+            String elaborationDate,
             String provider,
             String category,
             int stock,
@@ -74,7 +74,7 @@ public class Product {
         this.price = price;
         this.category = category;
         this.dimensions = dimensions;
-        this.expiringDate = expiringDate;
+        this.expirationDate = expirationDate;
         this.elaborationDate = elaborationDate;
         this.provider = provider;
         this.stock = stock;

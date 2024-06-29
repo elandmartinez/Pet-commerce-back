@@ -22,7 +22,7 @@ public class Client {
     private String password;
 
     @Column(nullable = false, name = "phone_number")
-    private int phoneNumber;
+    private Long phoneNumber;
 
     @Column(nullable = false, name = "national_code")
     private short nationalCode;
@@ -31,7 +31,7 @@ public class Client {
             String name,
             String email,
             String password,
-            int phoneNumber,
+            Long phoneNumber,
             short nationalCode
     ) {
         this.name = name;
