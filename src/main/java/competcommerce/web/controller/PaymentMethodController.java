@@ -1,7 +1,6 @@
 package competcommerce.web.controller;
 
 import competcommerce.persistence.entity.PaymentMethod;
-import competcommerce.persistence.entityDataGenerators.PaymentMethodDataGenerator;
 import competcommerce.service.ClientService;
 import competcommerce.service.PaymentMethodService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -52,9 +52,8 @@ public class Product {
     @Column(nullable = false)
     private int stock;
 
-
-    @Column(nullable = false, length = 150, name = "url_image")
-    private String urlImage;
+    @Column(nullable = false, length = 150, name = "image_url")
+    private String imageUrl;
 
 
     public Product (
@@ -67,7 +66,7 @@ public class Product {
             String provider,
             String category,
             int stock,
-            String urlImage
+            String imageUrl
             ) {
         this.name = name;
         this.description = description;
@@ -78,6 +77,6 @@ public class Product {
         this.elaborationDate = elaborationDate;
         this.provider = provider;
         this.stock = stock;
-        this.urlImage = urlImage;
+        this.imageUrl = imageUrl;
     }
 }

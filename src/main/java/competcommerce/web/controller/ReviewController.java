@@ -2,7 +2,6 @@ package competcommerce.web.controller;
 
 import competcommerce.persistence.entity.Review;
 import competcommerce.persistence.entityDataGenerators.ReviewDataGenerator;
-import competcommerce.service.PetService;
 import competcommerce.service.ProductService;
 import competcommerce.service.ReviewService;
 import org.springframework.http.ResponseEntity;

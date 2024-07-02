@@ -1,7 +1,6 @@
 package competcommerce.persistence.entityDataGenerators;
 
 import com.github.javafaker.Faker;
-import competcommerce.persistence.entity.Payment;
 
 import java.util.ArrayList;
 

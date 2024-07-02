@@ -4,7 +4,6 @@ import competcommerce.persistence.entity.Order;
 import competcommerce.persistence.entityDataGenerators.OrderDataGenerator;
 import competcommerce.service.ClientService;
 import competcommerce.service.OrderService;
-import competcommerce.service.PaymentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
