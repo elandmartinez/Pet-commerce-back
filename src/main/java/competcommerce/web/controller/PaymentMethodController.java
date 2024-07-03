@@ -34,9 +34,6 @@ public class PaymentMethodController {
 
     @PostMapping("/post/{amountToGenerate}")
     public ResponseEntity post (@PathVariable int amountToGenerate) {
-        int totalAmountOfClients = this.clientService.getAll().size();
-        ArrayList<PaymentMethod> paymentMethods = PaymentMethodDataGenerator.generatePayments(amountToGenerate, totalAmountOfClients);
-        this.paymentMethodService.addMany(paymentMethods);
 
         return ResponseEntity.ok().build();
     }

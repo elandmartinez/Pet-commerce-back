@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/reviews")
@@ -26,15 +27,18 @@ public class ReviewController {
         return ResponseEntity.ok(this.reviewService.getAll());
     }
 
+    @GetMapping("/get-by-product-id/{productId}")
+    public ResponseEntity getByProductId (@PathVariable int productId) {
+        return ResponseEntity.ok(this.reviewService.getByProductId(productId));
+    }
+
     @GetMapping("/get/{reviewId}")
     public ResponseEntity getOne(@PathVariable int reviewId) {
         return ResponseEntity.ok(this.reviewService.getById(reviewId));
     }
 
-    @PostMapping("/post/{amountToGenerate}")
-    public ResponseEntity post(@PathVariable int amountToGenerate) {
-        int totalAmountOfProducts = this.productService.getAll().size();
-        ArrayList<Review> newReviews = ReviewDataGenerator.generateReviews(amountToGenerate, totalAmountOfProducts);
+    @PostMapping("/post")
+    public ResponseEntity post(@RequestBody List<Review> newReviews) {
         this.reviewService.addMany(newReviews);
 
         return ResponseEntity.ok().build();

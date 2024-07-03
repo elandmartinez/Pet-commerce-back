@@ -15,12 +15,10 @@ public class OrderController {
 
     private final OrderService orderService;
     private final ClientService clientService;
-    private final PaymentService paymentService;
 
-    public OrderController (OrderService orderService, ClientService clientService, PaymentService paymentService) {
+    public OrderController (OrderService orderService, ClientService clientService) {
         this.orderService = orderService;
         this.clientService = clientService;
-        this.paymentService = paymentService;
     }
 
     @GetMapping("/get")
@@ -35,11 +33,6 @@ public class OrderController {
 
     @PostMapping("/post/{amountToGenerate}")
     public ResponseEntity post (@PathVariable int amountToGenerate) {
-        int totalAmountOfClients = this.clientService.getAll().size();
-        int totalAmountOfPayments = this.paymentService.getAll().size();
-        ArrayList<Order> newOrders = OrderDataGenerator.generateOrders(amountToGenerate, totalAmountOfClients, totalAmountOfPayments);
-        this.orderService.addMany(newOrders);
-
         return ResponseEntity.ok().build();
     }
 

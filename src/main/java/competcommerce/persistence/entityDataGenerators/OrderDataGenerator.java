@@ -22,8 +22,7 @@ public class OrderDataGenerator {
                     formatDateAndTimeToLocalDate(fake.date()),//date of purchase
                     fake.lorem().characters(10), //status of purchase
                     fake.number().numberBetween(1, totalOfClients), // client id, it will be one meanwhile we build the real workflow of this
-                    fake.number().numberBetween(1,10),
-                    fake.number().numberBetween(1, totalOfPayments) //payment id will also be 1 meanwhile we build the actual workflow of this
+                    fake.number().numberBetween(1,10)
             ));
         }
 

@@ -32,21 +32,16 @@ public class Order {
     @Column(nullable = false, name = "total_products")
     private int totalProducts;
 
-    @Column(nullable = false, name = "payment_id")
-    private int paymentId;
-
     public Order(
             LocalDate purchaseDate,
             String status,
             int clientId,
-            int totalProducts,
-            int paymentId
+            int totalProducts
     ) {
         this.purchaseDate = purchaseDate;
         this.status = status;
         this.clientId = clientId;
         this.totalProducts = totalProducts;
-        this.paymentId = paymentId;
     }
 
     @ManyToMany

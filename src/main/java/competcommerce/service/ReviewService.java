@@ -21,6 +21,8 @@ public class ReviewService {
         return this.reviewRepository.findAll();
     }
 
+    public List<Review> getByProductId (int productId) {return this.reviewRepository.findByReviewsByProductId(productId);}
+
     public Optional<Review> getById (int reviewId) {
         if(!this.reviewRepository.existsById(reviewId)) {
             throw new RuntimeException("There's no records for the id provided");
