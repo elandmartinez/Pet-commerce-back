@@ -39,5 +39,6 @@ public class ReviewService {
     public void deleteById (int reviewId) {
         this.reviewRepository.deleteById(reviewId);
     }
-    //TODO: make all services methods that post return void
+
+    public void deleteAll () {this.reviewRepository.deleteAll();}
 }

@@ -1,9 +1,9 @@
 package competcommerce.service;
 
+import competcommerce.persistence.entity.Client;
 import competcommerce.persistence.entity.Order;
 import competcommerce.persistence.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class OrderService {
     }
 
     public List<Order> getByClientId (String clientId) {
-        this.orderRepository.getOrdersByClientId(clientId);
+        return this.orderRepository.getOrdersByClientId(clientId);
     }
 
     public void addMany (List<Order> orders) {this.orderRepository.saveAll(orders);}

@@ -1,7 +1,6 @@
 package competcommerce.web.controller;
 
 import competcommerce.persistence.entity.Review;
-import competcommerce.persistence.entityDataGenerators.ReviewDataGenerator;
 import competcommerce.service.ProductService;
 import competcommerce.service.ReviewService;
 import org.springframework.http.ResponseEntity;
@@ -61,6 +60,12 @@ public class ReviewController {
     @DeleteMapping("/delete/{reviewId}")
     public ResponseEntity delete (@PathVariable int reviewId) {
         this.reviewService.deleteById(reviewId);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/delete-all")
+    public ResponseEntity deleteAll () {
+        this.reviewService.deleteAll();
         return ResponseEntity.ok().build();
     }
 }

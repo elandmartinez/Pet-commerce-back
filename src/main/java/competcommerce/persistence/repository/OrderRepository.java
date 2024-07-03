@@ -10,5 +10,5 @@ import java.util.List;
 public interface OrderRepository extends ListCrudRepository<Order, Integer> {
 
     @Query("SELECT o FROM Order o WHERE o.clientId = ?1")
-    public List<Client> getOrdersByClientId(String clientId);
+    public List<Order> getOrdersByClientId(String clientId);
 }

@@ -25,7 +25,7 @@ public class OrderController {
         return ResponseEntity.ok(this.orderService.getAll());
     }
 
-    @GetMapping("/get-by-client-id")
+    @GetMapping("/get-by-client-id/{clientId}")
     public ResponseEntity getByClientId (@PathVariable String clientId) {
         return ResponseEntity.ok(this.orderService.getByClientId(clientId));
     }

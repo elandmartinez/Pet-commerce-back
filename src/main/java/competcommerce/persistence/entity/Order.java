@@ -34,7 +34,7 @@ public class Order {
     private String cardOwnerName;
 
     @Column(nullable = false, name = "client_id")
-    private int clientId;
+    private String clientId;
 
     @Column(nullable = false, name = "products_ids")
     private List<String> productsIds;
@@ -44,7 +44,7 @@ public class Order {
             String status,
             String cardLastFourNumbers,
             String cardOwnerName,
-            int clientId,
+            String clientId,
             List<String> productsIds
     ) {
         this.purchaseDate = purchaseDate;

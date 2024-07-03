@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/clients")
@@ -34,9 +35,8 @@ public class ClientController {
         return ResponseEntity.ok(this.clientService.getByName(clientName));
     }
 
-    @PostMapping("/post/{amountToGenerate}")
-    public ResponseEntity post (@PathVariable int amountToGenerate) {
-        ArrayList<Client> newClients = ClientDataGenerator.generateClients(amountToGenerate);
+    @PostMapping("/post")
+    public ResponseEntity post (@RequestBody List<Client> newClients) {
         this.clientService.addMany(newClients);
 
         return ResponseEntity.ok().build();

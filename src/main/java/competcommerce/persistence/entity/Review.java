@@ -17,6 +17,9 @@ public class Review {
     private int reviewId;
 
     @Column(nullable = false)
+    private String username;
+
+    @Column(nullable = false)
     private short score;
 
     @Column(nullable = false, length = 400)
@@ -26,10 +29,12 @@ public class Review {
     private int productId;
 
     public Review (
+            String username,
             short score,
             String description,
             int productId
     ) {
+        this.username = username;
         this.score = score;
         this.description = description;
         this.productId = productId;
