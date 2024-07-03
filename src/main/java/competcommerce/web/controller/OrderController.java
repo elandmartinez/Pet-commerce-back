@@ -37,11 +37,12 @@ public class OrderController {
 
     @PostMapping("/post")
     public ResponseEntity post (@RequestBody List<Order> newOrders) {
+        this.orderService.addMany(newOrders);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/post-order")
-    public ResponseEntity postOne (@PathVariable Order newOrder) {
+    public ResponseEntity postOne (@RequestBody Order newOrder) {
         this.orderService.addOne(newOrder);
 
         return ResponseEntity.ok().build();
