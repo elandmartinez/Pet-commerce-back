@@ -28,7 +28,11 @@ public class AddressService {
         return this.addressRepository.findById(addressId);
     }
 
-    public void addMany(ArrayList<Address> addresses) {
+    public List<Address> getByClientId (String clientId) {
+        return this.addressRepository.getAddressesByClientId(clientId);
+    }
+
+    public void addMany(List<Address> addresses) {
         this.addressRepository.saveAll(addresses);
     }
 

@@ -1,7 +1,6 @@
 package competcommerce.web.controller;
 
 import competcommerce.persistence.entity.Client;
-import competcommerce.persistence.entityDataGenerators.ClientDataGenerator;
 import competcommerce.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

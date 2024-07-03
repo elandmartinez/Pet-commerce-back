@@ -1,7 +1,6 @@
 package competcommerce.service;
 
 import competcommerce.persistence.entity.PaymentMethod;
-import competcommerce.persistence.repository.PaymentMethodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

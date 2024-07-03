@@ -30,6 +30,10 @@ public class OrderService {
         return this.orderRepository.findById(orderId);
     }
 
+    public List<Order> getByClientId (String clientId) {
+        this.orderRepository.getOrdersByClientId(clientId);
+    }
+
     public void addMany (List<Order> orders) {this.orderRepository.saveAll(orders);}
 
     public void addOne (Order newOrder) { this.orderRepository.save(newOrder);}

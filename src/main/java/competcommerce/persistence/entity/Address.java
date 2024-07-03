@@ -23,7 +23,7 @@ public class Address {
     private String region;
 
     @Column(nullable = false, name = "client_id")
-    private int clientId;
+    private String clientId;
 
     @Column(nullable = false, length = 50)
     private String country;
@@ -36,7 +36,7 @@ public class Address {
             String city,
             String region,
             String country,
-            int clientId
+            String clientId
     ) {
         this.street = street;
         this.city = city;

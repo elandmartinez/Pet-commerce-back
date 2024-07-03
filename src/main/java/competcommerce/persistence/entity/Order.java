@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -18,37 +19,39 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id", nullable = false)
-    private int purchaseOrderId;
+    private int OrderId;
 
-    @Column(nullable = false, columnDefinition = "DATETIME", name = "order_date")
-    private LocalDate purchaseDate;
+    @Column(nullable = false, name = "order_date")
+    private String purchaseDate;
 
     @Column(nullable = false, length = 20)
     private String status;
 
+    @Column(nullable = false, name = "card-last-four-numbers")
+    private String cardLastFourNumbers;
+
+    @Column(nullable = false, name = "card_owner_name")
+    private String cardOwnerName;
+
     @Column(nullable = false, name = "client_id")
     private int clientId;
 
-    @Column(nullable = false, name = "total_products")
-    private int totalProducts;
+    @Column(nullable = false, name = "products_ids")
+    private List<String> productsIds;
 
     public Order(
-            LocalDate purchaseDate,
+            String purchaseDate,
             String status,
+            String cardLastFourNumbers,
+            String cardOwnerName,
             int clientId,
-            int totalProducts
+            List<String> productsIds
     ) {
         this.purchaseDate = purchaseDate;
         this.status = status;
+        this.cardLastFourNumbers = cardLastFourNumbers;
+        this.cardOwnerName = cardOwnerName;
         this.clientId = clientId;
-        this.totalProducts = totalProducts;
+        this.productsIds = productsIds;
     }
-
-    @ManyToMany
-    @JoinTable(
-            name = "orders_products",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    private ArrayList<Product> products;
 }

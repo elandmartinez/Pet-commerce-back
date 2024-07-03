@@ -1,13 +1,12 @@
 package competcommerce.web.controller;
 
 import competcommerce.persistence.entity.Order;
-import competcommerce.persistence.entityDataGenerators.OrderDataGenerator;
 import competcommerce.service.ClientService;
 import competcommerce.service.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -26,13 +25,18 @@ public class OrderController {
         return ResponseEntity.ok(this.orderService.getAll());
     }
 
+    @GetMapping("/get-by-client-id")
+    public ResponseEntity getByClientId (@PathVariable String clientId) {
+        return ResponseEntity.ok(this.orderService.getByClientId(clientId));
+    }
+
     @GetMapping("/get/{orderId}")
     public ResponseEntity getBydId(@PathVariable int orderId) {
         return ResponseEntity.ok(this.orderService.getBydId(orderId));
     }
 
-    @PostMapping("/post/{amountToGenerate}")
-    public ResponseEntity post (@PathVariable int amountToGenerate) {
+    @PostMapping("/post")
+    public ResponseEntity post (@RequestBody List<Order> newOrders) {
         return ResponseEntity.ok().build();
     }
 

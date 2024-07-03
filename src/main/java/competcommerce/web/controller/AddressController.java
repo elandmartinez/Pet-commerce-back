@@ -1,14 +1,13 @@
 package competcommerce.web.controller;
 
 import competcommerce.persistence.entity.Address;
-import competcommerce.persistence.entityDataGenerators.AddressDataGenerator;
 import competcommerce.service.AddressService;
 import competcommerce.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/addresses")
@@ -32,10 +31,13 @@ public class AddressController {
         return ResponseEntity.ok(this.addressService.getById(addressId));
     }
 
-    @PostMapping("/post/{amountToGenerate}")
-    public ResponseEntity postMany (@PathVariable int amountToGenerate) {
-        int amountOfClients = this.clientService.getAll().size();
-        ArrayList<Address> newAddresses = AddressDataGenerator.generateAddresses(amountToGenerate, amountOfClients);
+    @GetMapping("/get-by-client-id/{clientId}")
+    public ResponseEntity getByClientId (@PathVariable String clientId) {
+        return ResponseEntity.ok(this.addressService.getByClientId(clientId));
+    }
+
+    @PostMapping("/post")
+    public ResponseEntity postMany (@RequestBody List<Address> newAddresses) {
         this.addressService.addMany(newAddresses);
 
         return ResponseEntity.ok().build();
