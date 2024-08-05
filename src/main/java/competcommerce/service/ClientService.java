@@ -2,7 +2,6 @@ package competcommerce.service;
 
 import competcommerce.persistence.entity.Client;
 import competcommerce.persistence.repository.ClientRepository;
-import competcommerce.persistence.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;

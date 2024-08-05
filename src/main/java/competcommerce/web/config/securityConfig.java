@@ -39,6 +39,7 @@ public class securityConfig implements WebMvcConfigurer {
                     authorizationManagerRequestMatcherRegistry
                             .requestMatchers(HttpMethod.POST, "/api/login").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/clients/post-client").permitAll()
+                            .requestMatchers(HttpMethod.POST, "/api/orders/post-order").hasAnyRole("ADMIN", "CUSTOMER")
                             .requestMatchers(HttpMethod.POST, "/api/**").hasRole("ADMIN")
                             .requestMatchers(HttpMethod.GET, "/api/**").hasAnyRole("ADMIN", "CUSTOMER")
                             .anyRequest()

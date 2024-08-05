@@ -25,7 +25,8 @@ public class ProductController {
     }
 
     @GetMapping("/get-paginated")
-    public ResponseEntity getPaginated (@RequestParam(defaultValue = "0") int pagNum,
+    public ResponseEntity getPaginated (
+                                        @RequestParam(defaultValue = "0") int pagNum,
                                         @RequestParam(defaultValue = "10") int amountPerPag,
                                         @RequestParam(defaultValue = "name") String sortBy,
                                         @RequestParam(defaultValue = "ASC") String direction
@@ -51,9 +52,9 @@ public class ProductController {
 
     }
 
-    @PutMapping("/update-product")
-    public ResponseEntity updateProduct(@RequestBody Product product) {
-        this.productService.addOne(product);
+    @PutMapping("/update-product/{productId}")
+    public ResponseEntity updateProduct(@RequestBody Product product, @PathVariable int productId) {
+        this.productService.updateProduct(product, productId);
         return ResponseEntity.ok().build();
 
     }
