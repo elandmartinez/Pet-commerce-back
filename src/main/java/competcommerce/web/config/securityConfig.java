@@ -22,7 +22,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableMethodSecurity(securedEnabled = true)
-@SpringBootApplication
 public class securityConfig implements WebMvcConfigurer {
     private final JwtFilter jwtFilter;
 
